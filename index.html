@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Benard</title>
-    <scrpt>
+    <script>
         async function getAdvice() {
             const question = document.getElementById('question').value;
             const response = await fetch('http://127.0.0.1:5000/get_advice', {
@@ -15,7 +15,7 @@
             const data = await response.json();
             document.getElementById('response').innerText = data.response;
         }
-    </scrpt>
+    </script>
 </head>
 <body> 
     <h1>Ask Benard</h1>
