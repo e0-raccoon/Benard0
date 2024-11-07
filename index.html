@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Benard</title>
+    <scrpt>
+        async function getAdvice() {
+            const question = document.getElementById('question').value;
+            const response = await fetch('http://127.0.0.1:5000/get_advice', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({question: question})
+            });
+            const data = await response.json();
+            document.getElementById('response').innerText = data.response;
+        }
+    </scrpt>
+</head>
+<body> 
+    <h1>Ask Benard</h1>
+    <form id="adviceForm" onsubmit="event.preventDefault(); getAdvice();">
+        <label for="question">Your question</label>
+        <input type="text" id="question" name="question" required>
+        <button type="submit">Get Advice</button>
+    </form>
+    <p id="response"></p>
+</body>
+</html>
